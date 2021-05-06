@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>2 sign() | 熙宁的笔记</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="熙宁的笔记">
+    <link rel="preload" href="/assets/css/0.styles.da9e759b.css" as="style"><link rel="preload" href="/assets/js/app.a604956d.js" as="script"><link rel="preload" href="/assets/js/2.121ff9c7.js" as="script"><link rel="preload" href="/assets/js/18.67a67865.js" as="script"><link rel="preload" href="/assets/js/7.bc61be6e.js" as="script"><link rel="prefetch" href="/assets/js/10.529c26a5.js"><link rel="prefetch" href="/assets/js/11.c7f1e65a.js"><link rel="prefetch" href="/assets/js/12.c44ba52c.js"><link rel="prefetch" href="/assets/js/13.74e8dc86.js"><link rel="prefetch" href="/assets/js/14.7f879f78.js"><link rel="prefetch" href="/assets/js/15.2bc925e0.js"><link rel="prefetch" href="/assets/js/16.fb5ab7f0.js"><link rel="prefetch" href="/assets/js/17.b9254478.js"><link rel="prefetch" href="/assets/js/19.adaa9d28.js"><link rel="prefetch" href="/assets/js/20.31522f4f.js"><link rel="prefetch" href="/assets/js/21.fba79ebb.js"><link rel="prefetch" href="/assets/js/22.4f911ef3.js"><link rel="prefetch" href="/assets/js/23.2c620da6.js"><link rel="prefetch" href="/assets/js/24.703d6b32.js"><link rel="prefetch" href="/assets/js/3.00b0165e.js"><link rel="prefetch" href="/assets/js/4.8feb03a5.js"><link rel="prefetch" href="/assets/js/5.0a8e772b.js"><link rel="prefetch" href="/assets/js/6.08d10593.js"><link rel="prefetch" href="/assets/js/8.54160e8a.js"><link rel="prefetch" href="/assets/js/9.24c0b5ee.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.da9e759b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo128.png" alt="熙宁的笔记" class="logo"> <span class="site-name can-hide">熙宁的笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言语法" class="dropdown-title"><span class="title">语言语法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/devlang/db/oracle/grammar/DDO-G01-start_with.html" class="nav-link">
+  Oracle
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="经验累积" class="dropdown-title"><span class="title">经验累积</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 项目复盘 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/project/EP-001-high_concurrency.html" class="nav-link">
+  某高并发互联网项目
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/db/oracle/basic/EDO-B01-exp_empty.html" class="nav-link">
+  Oracle
+</a></li></ul></li><li class="dropdown-item"><h4>
+          
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/other/EO-001-sql_recoverable_exception.html" class="nav-link">
+  其它
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/readingnotes/" class="nav-link">
+  读书笔记
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言语法" class="dropdown-title"><span class="title">语言语法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/devlang/db/oracle/grammar/DDO-G01-start_with.html" class="nav-link">
+  Oracle
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="经验累积" class="dropdown-title"><span class="title">经验累积</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 项目复盘 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/project/EP-001-high_concurrency.html" class="nav-link">
+  某高并发互联网项目
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/db/oracle/basic/EDO-B01-exp_empty.html" class="nav-link">
+  Oracle
+</a></li></ul></li><li class="dropdown-item"><h4>
+          
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/other/EO-001-sql_recoverable_exception.html" class="nav-link">
+  其它
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/readingnotes/" class="nav-link">
+  读书笔记
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Oracle · 高级语法</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/devlang/db/oracle/grammar/DDO-G01-start_with.html" class="sidebar-link">1 递归查询 start with ... connect by</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Oracle · 函数</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/devlang/db/oracle/function/DDO-F01-sys_guid.html" class="sidebar-link">1 sys_guid()</a></li><li><a href="/devlang/db/oracle/function/DDO-F02-sign.html" class="active sidebar-link">2 sign()</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/devlang/db/oracle/function/DDO-F02-sign.html#_2-1-基本用法" class="sidebar-link">2.1 基本用法</a></li><li class="sidebar-sub-header"><a href="/devlang/db/oracle/function/DDO-F02-sign.html#_2-2-用于比较大小" class="sidebar-link">2.2 用于比较大小</a></li></ul></li><li><a href="/devlang/db/oracle/function/DDO-F03-lag_lead.html" class="sidebar-link">3 lag()与lead()</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_2-sign"><a href="#_2-sign" class="header-anchor">#</a> 2 sign()</h1> <div class="seal-box" data-v-1ace8d3a><div data-v-1ace8d3a><div class="head" data-v-1ace8d3a>sign()</div> <!----> <!----> <!----> <!----> <!----> <!----> <div data-v-1ace8d3a><span class="ico ico-date" data-v-1ace8d3a>创建时间：</span> <span class="info" data-v-1ace8d3a>2021.03.31</span></div> <!----> <!----> <div class="foot" data-v-1ace8d3a>竢实扬华 · 自强不息</div> <!----></div></div> <h2 id="_2-1-基本用法"><a href="#_2-1-基本用法" class="header-anchor">#</a> 2.1 基本用法</h2> <p>sign()函数只有一个参数，函数返回参数的正负性。</p> <ul><li><p>若返回1，表示参数大于0</p></li> <li><p>若返回-1，表示参数小于0</p></li> <li><p>若返回0，表示参数等于0</p></li></ul> <h2 id="_2-2-用于比较大小"><a href="#_2-2-用于比较大小" class="header-anchor">#</a> 2.2 用于比较大小</h2> <p>利用sign()函数的特性，可以对两个数值进行大小比较，也可以获取两个数值中的最大最小值，获取最小值写法如下：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">select</span> decode<span class="token punctuation">(</span>sign<span class="token punctuation">(</span>变量<span class="token number">1</span> <span class="token operator">-</span> 变量<span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> 变量<span class="token number">1</span><span class="token punctuation">,</span> 变量<span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">from</span> dual<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/devlang/db/oracle/function/DDO-F01-sys_guid.html" class="prev">
+        1 sys_guid()
+      </a></span> <span class="next"><a href="/devlang/db/oracle/function/DDO-F03-lag_lead.html">
+        3 lag()与lead()
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.a604956d.js" defer></script><script src="/assets/js/2.121ff9c7.js" defer></script><script src="/assets/js/18.67a67865.js" defer></script><script src="/assets/js/7.bc61be6e.js" defer></script>
+  </body>
+</html>
