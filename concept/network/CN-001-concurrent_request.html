@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>N001 并发连接数与请求数 | 熙宁的笔记</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="熙宁的笔记">
+    <link rel="preload" href="/assets/css/0.styles.a214eddf.css" as="style"><link rel="preload" href="/assets/js/app.f41daf01.js" as="script"><link rel="preload" href="/assets/js/2.30fbe7be.js" as="script"><link rel="preload" href="/assets/js/27.59d6e82d.js" as="script"><link rel="preload" href="/assets/js/7.3c3ab9e8.js" as="script"><link rel="prefetch" href="/assets/js/10.1af7e81f.js"><link rel="prefetch" href="/assets/js/11.f7029380.js"><link rel="prefetch" href="/assets/js/12.60154fc1.js"><link rel="prefetch" href="/assets/js/13.6e9ad29d.js"><link rel="prefetch" href="/assets/js/14.308160c2.js"><link rel="prefetch" href="/assets/js/15.5a47a4e3.js"><link rel="prefetch" href="/assets/js/16.2333efa5.js"><link rel="prefetch" href="/assets/js/17.8962c7f8.js"><link rel="prefetch" href="/assets/js/18.a121f897.js"><link rel="prefetch" href="/assets/js/19.2e1bed70.js"><link rel="prefetch" href="/assets/js/20.b75d6e7d.js"><link rel="prefetch" href="/assets/js/21.ea423222.js"><link rel="prefetch" href="/assets/js/22.4490f90e.js"><link rel="prefetch" href="/assets/js/23.0d66ba36.js"><link rel="prefetch" href="/assets/js/24.8f7f0477.js"><link rel="prefetch" href="/assets/js/25.dd04d6b3.js"><link rel="prefetch" href="/assets/js/26.405de47f.js"><link rel="prefetch" href="/assets/js/28.88aec9ed.js"><link rel="prefetch" href="/assets/js/29.3453c380.js"><link rel="prefetch" href="/assets/js/3.56e09a06.js"><link rel="prefetch" href="/assets/js/30.2a0ed954.js"><link rel="prefetch" href="/assets/js/31.30be7cf8.js"><link rel="prefetch" href="/assets/js/32.109f4632.js"><link rel="prefetch" href="/assets/js/33.58f8789c.js"><link rel="prefetch" href="/assets/js/34.87e7f583.js"><link rel="prefetch" href="/assets/js/35.946fa509.js"><link rel="prefetch" href="/assets/js/36.5238f51a.js"><link rel="prefetch" href="/assets/js/37.12edf3d5.js"><link rel="prefetch" href="/assets/js/38.a5c7c6b1.js"><link rel="prefetch" href="/assets/js/39.669dc21c.js"><link rel="prefetch" href="/assets/js/4.ed80ddb9.js"><link rel="prefetch" href="/assets/js/40.42b8b664.js"><link rel="prefetch" href="/assets/js/41.7bb3ca40.js"><link rel="prefetch" href="/assets/js/5.db3b527e.js"><link rel="prefetch" href="/assets/js/6.849a3fcf.js"><link rel="prefetch" href="/assets/js/8.44394931.js"><link rel="prefetch" href="/assets/js/9.69dc0b67.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a214eddf.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo128.png" alt="熙宁的笔记" class="logo"> <span class="site-name can-hide">熙宁的笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法区" class="dropdown-title"><span class="title">语法区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/devlang/db/oracle/grammar/DDO-G01-start_with.html" class="nav-link">
+  Oracle
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="扫盲区" class="dropdown-title"><span class="title">扫盲区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/concept/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/concept/network/" class="nav-link router-link-active">
+  计算机网络
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实践区" class="dropdown-title"><span class="title">实践区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 综合复盘 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/project/EP-001-high_concurrency.html" class="nav-link">
+  某高并发互联网项目
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/db/oracle/basic/EDO-B01-exp_empty.html" class="nav-link">
+  Oracle
+</a></li></ul></li><li class="dropdown-item"><h4>
+          
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/other/" class="nav-link">
+  其它
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="专项区" class="dropdown-title"><span class="title">专项区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/special/java8_in_action/SJIA-001-why_java8.html" class="nav-link">
+  Java 8 实战
+</a></li><li class="dropdown-item"><!----> <a href="/special/effective_java/SEJ-001-create_destroy_objects.html" class="nav-link">
+  Effective Java 第2版
+</a></li></ul></div></div><div class="nav-item"><a href="/readingnotes/" class="nav-link">
+  阅读区
+</a></div><div class="nav-item"><a href="/wordlist/" class="nav-link">
+  单词表
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法区" class="dropdown-title"><span class="title">语法区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/devlang/db/oracle/grammar/DDO-G01-start_with.html" class="nav-link">
+  Oracle
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="扫盲区" class="dropdown-title"><span class="title">扫盲区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/concept/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/concept/network/" class="nav-link router-link-active">
+  计算机网络
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实践区" class="dropdown-title"><span class="title">实践区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 综合复盘 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/project/EP-001-high_concurrency.html" class="nav-link">
+  某高并发互联网项目
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/db/oracle/basic/EDO-B01-exp_empty.html" class="nav-link">
+  Oracle
+</a></li></ul></li><li class="dropdown-item"><h4>
+          
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/other/" class="nav-link">
+  其它
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="专项区" class="dropdown-title"><span class="title">专项区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/special/java8_in_action/SJIA-001-why_java8.html" class="nav-link">
+  Java 8 实战
+</a></li><li class="dropdown-item"><!----> <a href="/special/effective_java/SEJ-001-create_destroy_objects.html" class="nav-link">
+  Effective Java 第2版
+</a></li></ul></div></div><div class="nav-item"><a href="/readingnotes/" class="nav-link">
+  阅读区
+</a></div><div class="nav-item"><a href="/wordlist/" class="nav-link">
+  单词表
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>扫盲区 · 计算机网络</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/concept/network/" class="sidebar-link">总索引</a></li><li><a href="/concept/network/CN-001-concurrent_request.html" class="active sidebar-link">N001 并发连接数与请求数</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/concept/network/CN-001-concurrent_request.html#_1-基本概念" class="sidebar-link">1 基本概念</a></li><li class="sidebar-sub-header"><a href="/concept/network/CN-001-concurrent_request.html#_2-连接与请求的关系" class="sidebar-link">2 连接与请求的关系</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="n001-并发连接数与请求数"><a href="#n001-并发连接数与请求数" class="header-anchor">#</a> N001 并发连接数与请求数</h1> <div class="seal-box" data-v-77f8f7a4><div data-v-77f8f7a4><div class="head" data-v-77f8f7a4>并发连接数与请求数</div> <!----> <!----> <!----> <!----> <!----> <!----> <div data-v-77f8f7a4><span class="ico ico-date" data-v-77f8f7a4>创建时间：</span> <span class="info" data-v-77f8f7a4>2021.12.14</span></div> <!----> <!----> <div class="foot" data-v-77f8f7a4>竢实扬华 · 自强不息</div> <!----> <!----></div></div> <h2 id="_1-基本概念"><a href="#_1-基本概念" class="header-anchor">#</a> 1 基本概念</h2> <p><strong>并发连接数 - SBC（Simultaneous Browser Connections）</strong></p> <p>并发连接数指的是客户端向服务器发起请求，并建立了TCP连接。每秒钟服务器链接的总TCP数量，就是并发连接数。</p> <p><strong>请求数 - QPS（Query Per Second） / RPS（Request Per Second）</strong></p> <p>请求数指的是客户端在建立完连接后，每秒完成向http服务发出数据包并接收服务器返回请求结果这个过程的数量。</p> <h2 id="_2-连接与请求的关系"><a href="#_2-连接与请求的关系" class="header-anchor">#</a> 2 连接与请求的关系</h2> <p>服务器返回请求结果后有两种情况：</p> <ul><li><p>HTTP数据包头包含Close字样，关闭本次TCP连接；</p></li> <li><p>HTTP数据包头包含Keep-Alive字样，本次连接不关闭，可继续通过该连接向HTTP服务发送请求，用于减少TCP并发连接数（节约重新打开连接的时间）。</p></li></ul> <div class="custom-block tip"><p class="custom-block-title">HTTP与长连接</p> <p>HTTP 1.0版本协议一般情况下不支持长连接，因此在每次请求发送完毕之后，TCP连接即会断开，因此一个TCP发送一个HTTP请求。</p> <p>想要HTTP 1.0版本协议支持长连接，需要在请求头中加入<code>Connection: Keep-Alive</code>，可以使TCP连接保持在活跃状态。</p> <p>HTTP 1.1版本协议支持了长连接，因此只要TCP连接不断开，便可以一直发送HTTP请求，持续不断，没有上限。</p> <p>如果HTTP 1.1版本协议不希望使用长连接，则要在请求头中加上<code>Connection: Close</code>，接收到这个请求头的对端服务就会主动关闭TCP连接。</p> <p>同样，HTTP 2.0版本协议支持多用复用，一个TCP连接是可以并发多个HTTP请求的，同样也是支持长连接，因此只要不断开TCP的连接，HTTP请求数也是可以没有上限地持续发送。</p> <p><strong>协议做了如上的规定，但实际上是否支持长连接，还是要看服务器（比如tomcat）和客户端（比如浏览器）的具体实现。</strong></p></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/concept/network/" class="prev router-link-active">
+        总索引
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.f41daf01.js" defer></script><script src="/assets/js/2.30fbe7be.js" defer></script><script src="/assets/js/27.59d6e82d.js" defer></script><script src="/assets/js/7.3c3ab9e8.js" defer></script>
+  </body>
+</html>

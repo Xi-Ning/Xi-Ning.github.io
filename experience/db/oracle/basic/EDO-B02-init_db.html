@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>2 创建表空间、用户以及授权 | 熙宁的笔记</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="熙宁的笔记">
+    <link rel="preload" href="/assets/css/0.styles.a214eddf.css" as="style"><link rel="preload" href="/assets/js/app.f41daf01.js" as="script"><link rel="preload" href="/assets/js/2.30fbe7be.js" as="script"><link rel="preload" href="/assets/js/34.87e7f583.js" as="script"><link rel="preload" href="/assets/js/7.3c3ab9e8.js" as="script"><link rel="prefetch" href="/assets/js/10.1af7e81f.js"><link rel="prefetch" href="/assets/js/11.f7029380.js"><link rel="prefetch" href="/assets/js/12.60154fc1.js"><link rel="prefetch" href="/assets/js/13.6e9ad29d.js"><link rel="prefetch" href="/assets/js/14.308160c2.js"><link rel="prefetch" href="/assets/js/15.5a47a4e3.js"><link rel="prefetch" href="/assets/js/16.2333efa5.js"><link rel="prefetch" href="/assets/js/17.8962c7f8.js"><link rel="prefetch" href="/assets/js/18.a121f897.js"><link rel="prefetch" href="/assets/js/19.2e1bed70.js"><link rel="prefetch" href="/assets/js/20.b75d6e7d.js"><link rel="prefetch" href="/assets/js/21.ea423222.js"><link rel="prefetch" href="/assets/js/22.4490f90e.js"><link rel="prefetch" href="/assets/js/23.0d66ba36.js"><link rel="prefetch" href="/assets/js/24.8f7f0477.js"><link rel="prefetch" href="/assets/js/25.dd04d6b3.js"><link rel="prefetch" href="/assets/js/26.405de47f.js"><link rel="prefetch" href="/assets/js/27.59d6e82d.js"><link rel="prefetch" href="/assets/js/28.88aec9ed.js"><link rel="prefetch" href="/assets/js/29.3453c380.js"><link rel="prefetch" href="/assets/js/3.56e09a06.js"><link rel="prefetch" href="/assets/js/30.2a0ed954.js"><link rel="prefetch" href="/assets/js/31.30be7cf8.js"><link rel="prefetch" href="/assets/js/32.109f4632.js"><link rel="prefetch" href="/assets/js/33.58f8789c.js"><link rel="prefetch" href="/assets/js/35.946fa509.js"><link rel="prefetch" href="/assets/js/36.5238f51a.js"><link rel="prefetch" href="/assets/js/37.12edf3d5.js"><link rel="prefetch" href="/assets/js/38.a5c7c6b1.js"><link rel="prefetch" href="/assets/js/39.669dc21c.js"><link rel="prefetch" href="/assets/js/4.ed80ddb9.js"><link rel="prefetch" href="/assets/js/40.42b8b664.js"><link rel="prefetch" href="/assets/js/41.7bb3ca40.js"><link rel="prefetch" href="/assets/js/5.db3b527e.js"><link rel="prefetch" href="/assets/js/6.849a3fcf.js"><link rel="prefetch" href="/assets/js/8.44394931.js"><link rel="prefetch" href="/assets/js/9.69dc0b67.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a214eddf.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo128.png" alt="熙宁的笔记" class="logo"> <span class="site-name can-hide">熙宁的笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法区" class="dropdown-title"><span class="title">语法区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/devlang/db/oracle/grammar/DDO-G01-start_with.html" class="nav-link">
+  Oracle
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="扫盲区" class="dropdown-title"><span class="title">扫盲区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/concept/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/concept/network/" class="nav-link">
+  计算机网络
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实践区" class="dropdown-title"><span class="title">实践区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 综合复盘 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/project/EP-001-high_concurrency.html" class="nav-link">
+  某高并发互联网项目
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/db/oracle/basic/EDO-B01-exp_empty.html" class="nav-link">
+  Oracle
+</a></li></ul></li><li class="dropdown-item"><h4>
+          
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/other/" class="nav-link">
+  其它
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="专项区" class="dropdown-title"><span class="title">专项区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/special/java8_in_action/SJIA-001-why_java8.html" class="nav-link">
+  Java 8 实战
+</a></li><li class="dropdown-item"><!----> <a href="/special/effective_java/SEJ-001-create_destroy_objects.html" class="nav-link">
+  Effective Java 第2版
+</a></li></ul></div></div><div class="nav-item"><a href="/readingnotes/" class="nav-link">
+  阅读区
+</a></div><div class="nav-item"><a href="/wordlist/" class="nav-link">
+  单词表
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法区" class="dropdown-title"><span class="title">语法区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/devlang/db/oracle/grammar/DDO-G01-start_with.html" class="nav-link">
+  Oracle
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="扫盲区" class="dropdown-title"><span class="title">扫盲区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/concept/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/concept/network/" class="nav-link">
+  计算机网络
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实践区" class="dropdown-title"><span class="title">实践区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          ★ 综合复盘 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/project/EP-001-high_concurrency.html" class="nav-link">
+  某高并发互联网项目
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ★ 数据库 ★
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/db/oracle/basic/EDO-B01-exp_empty.html" class="nav-link">
+  Oracle
+</a></li></ul></li><li class="dropdown-item"><h4>
+          
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/other/" class="nav-link">
+  其它
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="专项区" class="dropdown-title"><span class="title">专项区</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/special/java8_in_action/SJIA-001-why_java8.html" class="nav-link">
+  Java 8 实战
+</a></li><li class="dropdown-item"><!----> <a href="/special/effective_java/SEJ-001-create_destroy_objects.html" class="nav-link">
+  Effective Java 第2版
+</a></li></ul></div></div><div class="nav-item"><a href="/readingnotes/" class="nav-link">
+  阅读区
+</a></div><div class="nav-item"><a href="/wordlist/" class="nav-link">
+  单词表
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Oracle · 基础篇</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/experience/db/oracle/basic/EDO-B01-exp_empty.html" class="sidebar-link">1 exp 导出空表</a></li><li><a href="/experience/db/oracle/basic/EDO-B02-init_db.html" class="active sidebar-link">2 创建表空间、用户以及授权</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/experience/db/oracle/basic/EDO-B02-init_db.html#_2-1-创建表空间" class="sidebar-link">2.1 创建表空间</a></li><li class="sidebar-sub-header"><a href="/experience/db/oracle/basic/EDO-B02-init_db.html#_2-2-创建用户并指定表空间" class="sidebar-link">2.2 创建用户并指定表空间</a></li><li class="sidebar-sub-header"><a href="/experience/db/oracle/basic/EDO-B02-init_db.html#_2-3-用户授权" class="sidebar-link">2.3 用户授权</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Oracle · 方案篇</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/experience/db/oracle/solution/EDO-S01-duplicate_record.html" class="sidebar-link">1 数据去重</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_2-创建表空间、用户以及授权"><a href="#_2-创建表空间、用户以及授权" class="header-anchor">#</a> 2 创建表空间、用户以及授权</h1> <div class="seal-box" data-v-77f8f7a4><div data-v-77f8f7a4><div class="head" data-v-77f8f7a4>创建表空间、用户以及授权</div> <!----> <!----> <!----> <!----> <!----> <!----> <div data-v-77f8f7a4><span class="ico ico-date" data-v-77f8f7a4>创建时间：</span> <span class="info" data-v-77f8f7a4>2021.04.01</span></div> <!----> <!----> <div class="foot" data-v-77f8f7a4>竢实扬华 · 自强不息</div> <!----> <!----></div></div> <h2 id="_2-1-创建表空间"><a href="#_2-1-创建表空间" class="header-anchor">#</a> 2.1 创建表空间</h2> <p>创建临时表空间：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">create</span> <span class="token keyword">temporary</span> <span class="token keyword">tablespace</span> USER_TEMP
+tempfile <span class="token string">'d:\tablespace\USER_TEMP.DBF'</span>
+size <span class="token number">50</span>m
+autoextend <span class="token keyword">on</span>
+<span class="token keyword">next</span> <span class="token number">50</span>m maxsize <span class="token number">5120</span>m
+extent management <span class="token keyword">local</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>创建数据表空间：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">create</span> <span class="token keyword">tablespace</span> USER_DATA
+logging
+datafile <span class="token string">'d:\tablespace\USER_DATA.DBF'</span>
+size <span class="token number">50</span>m
+autoextend <span class="token keyword">on</span>
+<span class="token keyword">next</span> <span class="token number">50</span>m maxsize <span class="token number">5120</span>m
+extent management <span class="token keyword">local</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="_2-2-创建用户并指定表空间"><a href="#_2-2-创建用户并指定表空间" class="header-anchor">#</a> 2.2 创建用户并指定表空间</h2> <p>创建用户并指定表空间：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">create</span> <span class="token keyword">user</span> USERNAME identified <span class="token keyword">by</span> PASSWORD
+<span class="token keyword">default</span> <span class="token keyword">tablespace</span> USER_DATA
+<span class="token keyword">temporary</span> <span class="token keyword">tablespace</span> USER_TEMP<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>设置用户在指定表空间上无限额：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">alter</span> <span class="token keyword">user</span> USERNAME quota unlimited <span class="token keyword">on</span> USER_DATA<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>全局取消用户表空间无限额：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">revoke</span> unlimited <span class="token keyword">tablespace</span> <span class="token keyword">from</span> USERNAME<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="_2-3-用户授权"><a href="#_2-3-用户授权" class="header-anchor">#</a> 2.3 用户授权</h2> <p>授予用户开发相关权限：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">grant</span> <span class="token keyword">connect</span><span class="token punctuation">,</span> resource<span class="token punctuation">,</span> <span class="token keyword">create</span> <span class="token keyword">view</span><span class="token punctuation">,</span> <span class="token keyword">create</span> job<span class="token punctuation">,</span> <span class="token keyword">create</span> <span class="token keyword">database</span> link<span class="token punctuation">,</span> <span class="token keyword">create</span> synonym<span class="token punctuation">,</span> debug <span class="token keyword">connect</span> <span class="token keyword">session</span> <span class="token keyword">to</span> USERNAME<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="custom-block tip"><p class="custom-block-title">Oracle的预定义角色</p> <p>Oracle的预定义角色中，常用的有connect、resource和dba。</p> <ul><li><p>connect是授予最终用户的典型权限，是最基本的授权</p></li> <li><p>resource包含了开发人员所需的大部分权限</p></li> <li><p>dba拥有全部权限，是系统的最高权限</p></li></ul></div> <p>解决PL/SQL第一次打开表时，出现“动态执行表不可访问，本会话的自动统计被禁止”的错误提示：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">grant</span> <span class="token keyword">select</span> <span class="token keyword">on</span> v_$statname <span class="token keyword">to</span> USERNAME<span class="token punctuation">;</span> 
+<span class="token keyword">grant</span> <span class="token keyword">select</span> <span class="token keyword">on</span> v_$sesstat <span class="token keyword">to</span> USERNAME<span class="token punctuation">;</span> 
+<span class="token keyword">grant</span> <span class="token keyword">select</span> <span class="token keyword">on</span> v_$<span class="token keyword">session</span> <span class="token keyword">to</span> USERNAME<span class="token punctuation">;</span> 
+<span class="token keyword">grant</span> <span class="token keyword">select</span> <span class="token keyword">on</span> v_$mystat <span class="token keyword">to</span> USERNAME<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/experience/db/oracle/basic/EDO-B01-exp_empty.html" class="prev">
+        1 exp 导出空表
+      </a></span> <span class="next"><a href="/experience/db/oracle/solution/EDO-S01-duplicate_record.html">
+        1 数据去重
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.f41daf01.js" defer></script><script src="/assets/js/2.30fbe7be.js" defer></script><script src="/assets/js/34.87e7f583.js" defer></script><script src="/assets/js/7.3c3ab9e8.js" defer></script>
+  </body>
+</html>
